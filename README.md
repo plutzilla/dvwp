@@ -39,13 +39,13 @@ By improving plugin quality across the ecosystem, we contribute to faster plugin
 git clone https://github.com/plutzilla/dvwp.git
 ```
 
-1. Copy to WordPress plugins directory:
+2. Copy the plugin folder to WordPress plugins directory:
 
 ```bash
-cp -r dvwp /path/to/wordpress/wp-content/plugins/
+cp -r dvwp/woocommerce-social-share /path/to/wordpress/wp-content/plugins/
 ```
 
-1. **DO NOT ACTIVATE** on production sites
+3. **DO NOT ACTIVATE** on production sites
 
 ### For Workshop Participants
 
@@ -53,21 +53,24 @@ cp -r dvwp /path/to/wordpress/wp-content/plugins/
 2. Review the code to identify violations
 3. Use the `VIOLATIONS-GUIDE.md` for verification (leaders only)
 
-## 📁 Plugin Structure
+## 📁 Project Structure
 
 ```
 dvwp/
-├── woocommerce-social-share.php    # Main plugin file
-├── admin/assets/admin.js            # Minified admin scripts
-├── public/assets/
-│   ├── social.js                    # Minified frontend scripts
-│   └── social.css                   # Minified styles
-├── includes/
-│   ├── ajax-handlers.php            # AJAX endpoints
-│   └── share-counter.php            # API handling
-├── readme.txt                       # WordPress.org style readme
+├── README.md                        # This file
+├── CONTRIBUTING.md                  # Contribution guidelines
 ├── VIOLATIONS-GUIDE.md              # Educational reference
-└── README.md                        # This file
+├── .markdownlint.json              # Markdown linting config
+└── woocommerce-social-share/        # Plugin folder
+    ├── woocommerce-social-share.php # Main plugin file
+    ├── readme.txt                   # WordPress.org style readme
+    ├── admin/assets/admin.js        # Minified admin scripts
+    ├── public/assets/
+    │   ├── social.js                # Minified frontend scripts
+    │   └── social.css               # Minified styles
+    └── includes/
+        ├── ajax-handlers.php        # AJAX endpoints
+        └── share-counter.php        # API handling
 ```
 
 ## 🚨 Plugin Quality Issues

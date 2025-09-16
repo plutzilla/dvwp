@@ -45,8 +45,8 @@ This plugin serves as a training tool for:
 **Locations:**
 
 - Lines 99-127 (trialware logic)
-- Lines 268-285 (license validation)
-- Lines 230-250 (pro platform restrictions)
+- Lines 258-270 (license validation)
+- Lines 186-210 (pro platform restrictions)
 
 **Fix:** Remove all license checks and make all features available
 
@@ -65,7 +65,7 @@ This plugin serves as a training tool for:
 
 **Files:** ALL PHP files
 **Violation:** Direct file access allowed
-**Example Location:** `woocommerce-social-share.php` Line 20
+**Example Location:** `woocommerce-social-share.php` Line 14
 
 ```php
 // VIOLATION: Missing ABSPATH check
@@ -79,9 +79,9 @@ This plugin serves as a training tool for:
 **Files:** Multiple
 **Examples:**
 
-- `woocommerce-social-share.php` Lines 148-152 (POST data)
-- `includes/ajax-handlers.php` Lines 15-17 (AJAX data)
-- `includes/share-counter.php` Lines 96-98 (GET parameters)
+- `woocommerce-social-share.php` Lines 153-157 (POST data)
+- `includes/ajax-handlers.php` Lines 6-8 (AJAX data)
+// NOTE: share-counter.php not present in provided context for GET param example
 
 **Fix:** Use `sanitize_text_field()`, `sanitize_email()`, etc.
 
@@ -90,8 +90,8 @@ This plugin serves as a training tool for:
 **Files:** Multiple  
 **Examples:**
 
-- `woocommerce-social-share.php` Lines 121-122 (admin form)
-- `includes/ajax-handlers.php` Lines 42-46 (echo output)
+- `woocommerce-social-share.php` Lines 126-127 (admin form)
+- `includes/ajax-handlers.php` Lines 27-31 (echo output)
 
 **Fix:** Use `esc_html()`, `esc_attr()`, `wp_kses_post()`, etc.
 
@@ -100,8 +100,8 @@ This plugin serves as a training tool for:
 **Files:** Multiple
 **Examples:**
 
-- `woocommerce-social-share.php` Line 137 (admin form)
-- `includes/ajax-handlers.php` Lines 12-13 (AJAX handlers)
+- `woocommerce-social-share.php` Line 142 (admin form)
+- `includes/ajax-handlers.php` Lines 1-2 (AJAX handlers)
 
 **Fix:** Add `wp_nonce_field()` and `wp_verify_nonce()`
 
@@ -110,8 +110,8 @@ This plugin serves as a training tool for:
 **Files:** Multiple
 **Examples:**
 
-- `woocommerce-social-share.php` Line 146 (settings save)
-- `includes/ajax-handlers.php` Line 45 (AJAX endpoints)
+- `woocommerce-social-share.php` Line 151 (settings save)
+- `includes/ajax-handlers.php` Line 31 (AJAX endpoints)
 
 **Fix:** Add `current_user_can()` checks
 
@@ -120,8 +120,8 @@ This plugin serves as a training tool for:
 **Files:** `includes/ajax-handlers.php`, `includes/share-counter.php`
 **Examples:**
 
-- Line 21: Direct SQL with user input
-- Line 53: Unescaped variables in query
+- Line 13: Direct SQL with user input
+- Line 38: Unescaped variables in query
 
 **Fix:** Use `$wpdb->prepare()` for all queries
 
@@ -130,15 +130,15 @@ This plugin serves as a training tool for:
 **Files:** Multiple
 **Examples:**
 
-- `woocommerce-social-share.php` Lines 234-235 (custom CSS output)
-- `includes/ajax-handlers.php` Lines 42-46 (unescaped output)
+- `woocommerce-social-share.php` Lines 210-211 (custom CSS output)
+- `includes/ajax-handlers.php` Lines 27-31 (unescaped output)
 
 **Fix:** Escape all output and validate input
 
 #### 11. File Upload Vulnerabilities
 
 **File:** `includes/ajax-handlers.php`
-**Location:** Lines 62-82
+**Location:** Lines 36-56
 **Violations:**
 
 - No file type validation
@@ -151,7 +151,7 @@ This plugin serves as a training tool for:
 #### 12. Path Traversal
 
 **Files:** `includes/ajax-handlers.php`
-**Example:** Lines 91-92
+**Example:** Lines 66-67
 
 ```php
 $filename = '../exports/' . $format . '_export_' . $date_from . '_to_' . $date_to . '.csv';
@@ -177,7 +177,7 @@ $filename = '../exports/' . $format . '_export_' . $date_from . '_to_' . $date_t
 #### 14. Hardcoded Scripts/Styles
 
 **File:** `woocommerce-social-share.php`
-**Locations:** Lines 48-65, 82-98
+**Locations:** Lines 36-65, 66-98
 **Violation:** Using `<script>` and `<style>` tags instead of wp_enqueue
 
 **Fix:** Use `wp_enqueue_script()` and `wp_enqueue_style()`
@@ -187,16 +187,16 @@ $filename = '../exports/' . $format . '_export_' . $date_from . '_to_' . $date_t
 **File:** `woocommerce-social-share.php`
 **Examples:**
 
-- Lines 38-40: Variable in text domain
-- Line 108: Variable in gettext function
-- Line 163: Variable in __() function
+- Lines 18-20: Variable in text domain
+- Line 77: Variable in gettext function
+- Line 132: Variable in __() function
 
 **Fix:** Use literal strings only
 
 #### 16. Session Abuse
 
 **File:** `woocommerce-social-share.php`
-**Location:** Line 21
+**Location:** Line 14
 
 ```php
 session_start();

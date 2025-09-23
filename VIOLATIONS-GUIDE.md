@@ -1,4 +1,4 @@
-# DVWP - Damn Vulnerable WordPress Plugin
+# DVWP - Damn Violating WordPress Plugin
 
 ## 🚨 EDUCATIONAL PURPOSES ONLY 🚨
 
